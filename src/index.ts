@@ -9,18 +9,19 @@ const testExpressions = [
   "name == 'arun' ? yesVal : noVal",
   "nestedObj.num * arrNestedObj[1].num",
 ];
-
+const scope = {
+  name: "stefan",
+  count: 6,
+  bigNum: 999,
+  yesVal: "heck yeah",
+  noVal: "no way",
+  nestedObj: { num: 11, qwer: { num: 10 } },
+  arrNestedObj: [{ num: 1 }, { num: 2 }],
+};
+console.log("scope: ", scope);
 testExpressions.forEach((exp) => {
   console.log("\nexpression: ", exp);
-  const result = parser.parse(exp).tryEvaluate({
-    name: "stefan",
-    count: 6,
-    bigNum: 999,
-    yesVal: "heck yeah",
-    noVal: "no way",
-    nestedObj: { num: 11, qwer: { num: 10 } },
-    arrNestedObj: [{ num: 1 }, { num: 2 }],
-  });
+  const result = parser.parse(exp).tryEvaluate(scope);
 
   console.log("result: ", result);
 });
