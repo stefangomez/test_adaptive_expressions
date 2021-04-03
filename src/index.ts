@@ -8,6 +8,19 @@ const testExpressions = [
   "name == 'stefan' ? yesVal : noVal",
   "name == 'arun' ? yesVal : noVal",
   "nestedObj.num * arrNestedObj[1].num",
+  "count > 5 && bigNum == 999 && name == 'stefan'",
+  "count > 5 && bigNum == 998 && name == 'stefan'",
+  "(count > 5 && bigNum == 998) || count == 7",
+  "(count > 5 && bigNum == 998) || count >= 5",
+  "((count > 5 && bigNum == 998) || count >= 5) && name != 'stefan'",
+  "count(arrNestedObj)",
+  "contains(name, 'ste')",
+  "contains(arr, 'hello')",
+  "contains(arr, 'worll')",
+  "last(arr)",
+  "last(arrNestedObj)",
+  "utcNow()",
+  "concat(year(utcNow()), '-yay') == '2021-yay'",
 ];
 const scope = {
   name: "stefan",
@@ -17,6 +30,7 @@ const scope = {
   noVal: "no way",
   nestedObj: { num: 11, qwer: { num: 10 } },
   arrNestedObj: [{ num: 1 }, { num: 2 }],
+  arr: ["hello", "world"],
 };
 console.log("scope: ", scope);
 testExpressions.forEach((exp) => {
