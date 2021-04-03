@@ -21,6 +21,8 @@ const testExpressions = [
   "last(arrNestedObj)",
   "utcNow()",
   "concat(year(utcNow()), '-yay') == '2021-yay'",
+  "undefinedVar.asdf > 10",
+  "undefinedVar.asdf + 10",
 ];
 const scope = {
   name: "stefan",
