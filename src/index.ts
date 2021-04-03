@@ -4,8 +4,10 @@ const parser = new ExpressionParser();
 const testExpressions = [
   "count + 111",
   "count >= 100 || count <= 5 ? 'outlier' : 'normal'",
+  "bigNum >= 100 || bigNum <= 5 ? 'outlier' : 'normal'",
   "name == 'stefan' ? yesVal : noVal",
   "name == 'arun' ? yesVal : noVal",
+  "nestedObj.num * arrNestedObj[1].num",
 ];
 
 testExpressions.forEach((exp) => {
@@ -13,10 +15,11 @@ testExpressions.forEach((exp) => {
   const result = parser.parse(exp).tryEvaluate({
     name: "stefan",
     count: 6,
+    bigNum: 999,
     yesVal: "heck yeah",
     noVal: "no way",
-    obj: { asdf: 11 },
-    arr: [{ asdf: 1 }, { asdf: 2 }],
+    nestedObj: { num: 11, qwer: { num: 10 } },
+    arrNestedObj: [{ num: 1 }, { num: 2 }],
   });
 
   console.log("result: ", result);
